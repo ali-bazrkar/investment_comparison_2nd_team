@@ -30,3 +30,6 @@ merged_data.to_csv('merged_asset_prices.csv')
 
 # Show a preview of the data
 print(merged_data.head())
+
+data = pd.DataFrame("merged_asset_prices.csv")
+data.head()
