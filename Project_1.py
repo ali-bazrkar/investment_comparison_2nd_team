@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import matplotlib.plot as plt
 
 # Define the tickers for each asset
 tickers = {
@@ -29,7 +30,31 @@ merged_data = pd.concat(dataframes.values(), axis=1, join='inner')
 merged_data.to_csv('merged_asset_prices.csv')
 
 # Show a preview of the data
-print(merged_data.head())
+#print(merged_data.head())
 
-data = pd.DataFrame("merged_asset_prices.csv")
+data = pd.read_csv("merged_asset_prices.csv")
 data.head()
+
+data.info()
+print(data.describe())
+
+# Set the plot size
+plt.figure(figsize=(14, 8))
+
+# Plot the price for each asset
+for asset in tickers.keys():
+plt.plot(merged_data.index, merged_data[f'{asset} Price'], label=asset)
+
+# Add titles and labels
+plt.title('Asset Prices (2015-2024)', fontsize=16)
+plt.xlabel('Date', fontsize=12)
+plt.ylabel('Price (USD)', fontsize=12)
+
+# Add a legend
+plt.legend()
+
+# Show the plot
+plt.show()
+
+
+
