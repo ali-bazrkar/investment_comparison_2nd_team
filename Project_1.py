@@ -43,7 +43,7 @@ plt.figure(figsize=(14, 8))
 
 # Plot the price for each asset
 for asset in tickers.keys():
-plt.plot(merged_data.index, merged_data[f'{asset} Price'], label=asset)
+    plt.plot(merged_data.index, merged_data[f'{asset} Price'], label=asset)
 
 # Add titles and labels
 plt.title('Asset Prices (2015-2024)', fontsize=16)
